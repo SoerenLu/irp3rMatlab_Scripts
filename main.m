@@ -6,6 +6,8 @@
 % - planning of trajectory in jointSpace by optimizing the objective function
 % - plots
 
+% @author Sören Langhorst
+
 
 close all;
 
