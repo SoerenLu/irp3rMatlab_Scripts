@@ -6,8 +6,8 @@
 % - planning of trajectory in jointSpace by optimizing the objective function
 % - plots
 
-% @author SÃ¶ren Langhorst
-
+% @author Sören Langhorst - IRP TU BS 2016
+% @email soeren.langhorst@gmail.com
 
 close all;
 
@@ -33,6 +33,7 @@ global PSO_alpha;
 global PSO_beta;
 global PSO_swarmsize;
 global PSO_maxIterations;
+global PSO_maxIterationsWithoutImprovement;
 
 %% Global Values initialization
 
@@ -56,16 +57,17 @@ genAlgo_mutationRate = 0.3;
 genAlgo_populationSize = 100; %1000
 genAlgo_maxGenerations = 2000; %2000
 genAlgo_maxConvergence = 10;
-genAlgo_newIndividualsPerGeneration = 0;round(genAlgo_populationSize/10);
+genAlgo_newIndividualsPerGeneration = 0;%round(genAlgo_populationSize/10);
 
 %Particle Swarm Optimization
-PSO_alpha = 0.01;   %weight of random movement
-PSO_beta = 0.05;    %weight of movement to current optimum
-PSO_swarmsize = 5000;
-PSO_maxIterations = 100;
+PSO_alpha = 0.025;   %weight of random movement
+PSO_beta = 0.5;    %weight of movement to current optimum
+PSO_swarmsize = 100;
+PSO_maxIterations = Inf;
+PSO_maxIterationsWithoutImprovement = 10; 
 
 %% Simulation Parameters
-nWaypoints=9;                      %number of points in cartesian Space
+nWaypoints=5;                      %number of points in cartesian Space
 useRestingLengths = false;          %
 standardPathNo = 2;    % 1/2/3/4/'randomLinear'
 deleteConfiguration = 'elbowDown';  %'elbowUp'/ 'elbowDown'
@@ -90,7 +92,7 @@ while(unsuccessful)
         %% Calculate Selfmotion Trajectories
         tic; disp(' # Calculate Selfmotion');
         for i=1:length(robot3R.pointArray) % for every Cartesian Point in robot.pointArray
-            robot3R.pointArray(i) = robot3R.pointArray(i).calculateTrimRemodelAndFitSelfmotion(robot3R, deleteConfiguration, 'fourier6', 0.2);
+            robot3R.pointArray(i) = robot3R.pointArray(i).calculateTrimRemodelAndFitSelfmotion(robot3R, deleteConfiguration, 'fourier8', 0.2);
         end
         %qTarget = optimizePoseManipulability(robot3R, robot3R.pointArray(end), true);
 
