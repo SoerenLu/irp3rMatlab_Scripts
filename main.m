@@ -67,11 +67,11 @@ PSO_maxIterations = Inf;
 PSO_maxIterationsWithoutImprovement = 10; 
 
 %% Simulation Parameters
-nWaypoints=5;                      %number of points in cartesian Space
+nWaypoints=9;                      %number of points in cartesian Space
 useRestingLengths = false;          %
 standardPathNo = 2;    % 1/2/3/4/'randomLinear'
-deleteConfiguration = 'elbowDown';  %'elbowUp'/ 'elbowDown'
-globalOptimMethod = 'particleSwarm';   %'fminsearch'/ 'genetic'/ 'geneticAndFminsearch'/ 'particleSwarm'
+deleteConfiguration = '';  %'elbowUp'/ 'elbowDown'
+globalOptimMethod = 'randomPath';   %'fminsearch'/ 'genetic'/ 'geneticAndFminsearch'/ 'particleSwarm'/ 'randomPath'
 
 %% Robot Description
 robot3R = Robot;
