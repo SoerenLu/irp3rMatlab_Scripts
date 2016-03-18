@@ -71,7 +71,7 @@ while( i<=Num_iterations && noImprovementCounter < Num_iterationsWithoutImprovem
         noImprovementCounter = noImprovementCounter + 1;
     end
     
-    disp(['Time for this Iteration: ', num2str(toc),'sec; Current obj.fun.: ', num2str(global_min),...
+    disp(['Time for this Iteration: ', num2str(toc),'sec; Current obj.fun.: ', num2str(minval),...
         '; No change since ', num2str(noImprovementCounter), ' Iterations; Iteration No: ', num2str(i)]); 
 
     hold on; plot(i, global_min,'go',i,minval,'rx');
