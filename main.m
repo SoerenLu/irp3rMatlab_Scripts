@@ -6,7 +6,7 @@
 % - planning of trajectory in jointSpace by optimizing the objective function
 % - plots
 
-% @author Sören Langhorst - IRP TU BS 2016
+% @author Sï¿½ren Langhorst - IRP TU BS 2016
 % @email soeren.langhorst@gmail.com
 
 close all;
@@ -62,16 +62,16 @@ genAlgo_newIndividualsPerGeneration = 0;%round(genAlgo_populationSize/10);
 %Particle Swarm Optimization
 PSO_alpha = 0.025;   %weight of random movement
 PSO_beta = 0.5;    %weight of movement to current optimum
-PSO_swarmsize = 100;
+PSO_swarmsize = 10000;
 PSO_maxIterations = Inf;
 PSO_maxIterationsWithoutImprovement = 10; 
 
 %% Simulation Parameters
-nWaypoints=9;                      %number of points in cartesian Space
+nWaypoints=5;                      %number of points in cartesian Space
 useRestingLengths = false;          %
 standardPathNo = 2;    % 1/2/3/4/'randomLinear'
-deleteConfiguration = '';  %'elbowUp'/ 'elbowDown'
-globalOptimMethod = 'randomPath';   %'fminsearch'/ 'genetic'/ 'geneticAndFminsearch'/ 'particleSwarm'/ 'randomPath'
+deleteConfiguration = 'elbowDown';  %'elbowUp'/ 'elbowDown'
+globalOptimMethod = 'particleSwarm';   %'fminsearch'/ 'genetic'/ 'geneticAndFminsearch'/ 'particleSwarm'/ 'randomPath'
 
 %% Robot Description
 robot3R = Robot;
