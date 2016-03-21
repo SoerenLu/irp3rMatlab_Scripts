@@ -11,6 +11,8 @@
 
 close all;
 
+clear
+
 addpath(genpath('Classes'));
 addpath(genpath('Functions'));
 
@@ -34,6 +36,7 @@ global PSO_beta;
 global PSO_swarmsize;
 global PSO_maxIterations;
 global PSO_maxIterationsWithoutImprovement;
+global PSOrepeated_numOfPSOs;
 
 %% Global Values initialization
 
@@ -61,17 +64,21 @@ genAlgo_newIndividualsPerGeneration = 0;%round(genAlgo_populationSize/10);
 
 %Particle Swarm Optimization
 PSO_alpha = 0.025;   %weight of random movement
-PSO_beta = 0.5;    %weight of movement to current optimum
-PSO_swarmsize = 10000;
+PSO_beta = 0.3;    %weight of movement to current optimum
+PSO_swarmsize = 100;
 PSO_maxIterations = Inf;
 PSO_maxIterationsWithoutImprovement = 10; 
 
+%Repeated Particle Swarm Optimization
+PSOrepeated_numOfPSOs = 2;
+
+
 %% Simulation Parameters
-nWaypoints=5;                      %number of points in cartesian Space
+nWaypoints=9;                      %number of points in cartesian Space
 useRestingLengths = false;          %
 standardPathNo = 2;    % 1/2/3/4/'randomLinear'
 deleteConfiguration = 'elbowDown';  %'elbowUp'/ 'elbowDown'
-globalOptimMethod = 'particleSwarm';   %'fminsearch'/ 'genetic'/ 'geneticAndFminsearch'/ 'particleSwarm'/ 'randomPath'
+globalOptimMethod = 'repeatedParticleSwarm';   %'fminsearch'/ 'genetic'/ 'geneticAndFminsearch'/ 'particleSwarm'/ 'repeatedParticleSwarm'/ 'randomPath'
 
 %% Robot Description
 robot3R = Robot;

@@ -7,7 +7,7 @@
 
 % Modified by Sören Langhorst, IRP TU Braunschweig 2016
 
-function [alltimeBestPos, alltimeMinval] = particleSwarmOptimization(objFun, dim, n , Num_iterations, Num_iterationsWithoutImprovement, range)
+function [pos_min, minval] = particleSwarmOptimization(objFun, dim, n , Num_iterations, Num_iterationsWithoutImprovement, range)
 % objFun= objective Function
 % dim = dimension of search space (number of Waypoints)
 % n=number of particles
@@ -37,7 +37,7 @@ pos = init_pso(dim, n ,range);
 
 %Plot the minvalue
 figure(1);
-alltimeMinval = inf;
+minval = inf;
 
 % Start iterations
 i=1;
@@ -67,21 +67,22 @@ while( i<=Num_iterations && noImprovementCounter < Num_iterationsWithoutImprovem
     %alpha=gamma.^i;
     
     % Move all the particles to new locations
-    pos = pso_move(pos,currentBestPos, PSO_alpha, PSO_beta, range);
+    pos = pso_move(pos,pos_min, PSO_alpha, PSO_beta, range);
     
     %Check if a better minimum could be found
-    if currentMinval <= alltimeMinval
-        alltimeMinval = currentMinval;
-        alltimeBestPos = currentBestPos;
+    if global_min <= minval
+        %minval is the minimum of all iterations
+        %global_min is minimum of current iteration
+        minval = global_min;
         noImprovementCounter = 0;
     else
         noImprovementCounter = noImprovementCounter + 1;
     end
     
-    disp(['Time for this Iteration: ', num2str(toc),'sec; Current obj.fun.: ', num2str(alltimeMinval),...
+    disp(['Time for this Iteration: ', num2str(toc),'sec; Current obj.fun.: ', num2str(minval),...
         '; No change since ', num2str(noImprovementCounter), ' Iterations; Iteration No: ', num2str(i)]); 
 
-    hold on; plot(i, currentMinval,'go',i,alltimeMinval,'rx');
+    hold on; plot(i, global_min,'go',i,minval,'rx');
     %hold off; plot(pos(1,:),pos(2,:),'.',pos_min(1),pos_min(2),'*');
     drawnow;
     
