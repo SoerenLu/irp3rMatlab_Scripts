@@ -1,6 +1,8 @@
 git add main.m
+git add gitPush.txt
 git add main_evaluateParticleSwarm.m 
-git add Functions/optimization/calculatePathRandomApprox.m
 git add Functions/optimization/calculatePathSwarmApprox.m
+git add Functions/optimization/calculatePathRandomApprox.m
+git add Functions/optimization/calculatePathSwarmRepeatedApprox.m
 git add Functions/optimization/PSO
 git commit -m "Home"
