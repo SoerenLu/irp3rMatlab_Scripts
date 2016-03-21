@@ -5,7 +5,7 @@
 % where best = [xbest ybest zbest] %an n by 3 matrix
 % xbest(i)/ybest(i) are the best ith iteration
 
-% Modified by Sören Langhorst, IRP TU Braunschweig 2016
+% Modified by Sï¿½ren Langhorst, IRP TU Braunschweig 2016
 
 function [alltimeBestPos, alltimeMinval] = particleSwarmOptimization(objFun, dim, n , Num_iterations, Num_iterationsWithoutImprovement, range)
 % objFun= objective Function
@@ -70,7 +70,7 @@ while( i<=Num_iterations && noImprovementCounter < Num_iterationsWithoutImprovem
     pos = pso_move(pos,currentBestPos, PSO_alpha, PSO_beta, range);
     
     %Check if a better minimum could be found
-    if currentMinval <= alltimeMinval
+    if currentMinval < alltimeMinval
         alltimeMinval = currentMinval;
         alltimeBestPos = currentBestPos;
         noImprovementCounter = 0;
