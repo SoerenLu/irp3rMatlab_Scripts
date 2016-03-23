@@ -63,9 +63,9 @@ genAlgo_maxConvergence = 10;
 genAlgo_newIndividualsPerGeneration = 0;%round(genAlgo_populationSize/10);
 
 %Particle Swarm Optimization
-PSO_alpha = 0.025;   %weight of random movement
+PSO_alpha = 0.005;   %weight of random movement
 PSO_beta = 0.3;    %weight of movement to current optimum
-PSO_swarmsize = 100;
+PSO_swarmsize = 1000;
 PSO_maxIterations = Inf;
 PSO_maxIterationsWithoutImprovement = 10; 
 
@@ -78,7 +78,7 @@ nWaypoints=9;                      %number of points in cartesian Space
 useRestingLengths = false;          %
 standardPathNo = 2;    % 1/2/3/4/'randomLinear'
 deleteConfiguration = 'elbowDown';  %'elbowUp'/ 'elbowDown'
-globalOptimMethod = 'repeatedParticleSwarm';   %'fminsearch'/ 'genetic'/ 'geneticAndFminsearch'/ 'particleSwarm'/ 'repeatedParticleSwarm'/ 'randomPath'
+globalOptimMethod = 'randomPath';   %'fminsearch'/ 'genetic'/ 'geneticAndFminsearch'/ 'particleSwarm'/ 'repeatedParticleSwarm'/ 'randomPath'
 
 %% Robot Description
 robot3R = Robot;

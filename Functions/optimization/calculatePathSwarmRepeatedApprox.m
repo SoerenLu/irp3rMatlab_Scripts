@@ -1,4 +1,4 @@
-function sliderPos = calculatePathSwarmApprox( robot , qStart, qTarget, pointArray, energyType)
+function sliderPos = calculatePathSwarmRepeatedApprox( robot , qStart, qTarget, pointArray, energyType)
 %Calculates the path of minimal objective function for selfmotion trajectories in pointArray
 %   q_start is the starting point of robot
 %   q_target is the target point
