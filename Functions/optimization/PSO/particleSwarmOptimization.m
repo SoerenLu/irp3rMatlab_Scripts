@@ -69,6 +69,18 @@ while( i<=Num_iterations && noImprovementCounter < Num_iterationsWithoutImprovem
     % Move all the particles to new locations
     pos = pso_move(pos,currentBestPos, PSO_alpha, PSO_beta, range);
     
+    %Only temporarily!!!!!!
+    warning('Remove this code after testing');
+    %choose n random particles:
+    nRandom = 10;
+    for k =1:nRandom
+        pick = unidrnd(n);
+        fminPos = zeros(dim, 1);
+        fminPos = pos(:, pick );
+        [tMin, minVal] = fminsearch(@(x)objFun(x),  fminPos ); 
+        pos(:,pick) = tMin;
+    end
+    
     %Check if a better minimum could be found
     if currentMinval < alltimeMinval
         alltimeMinval = currentMinval;
